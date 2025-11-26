@@ -60,17 +60,17 @@
                                     @endif
                                 </td>
                                 <td class="border px-4 py-2 text-center">{{ $app->status }}</td>
-                                <td class="border px-4 py-2">
+                                <td class="border px-4 py-2 w-1/6">
                                     @if ($app->review)
                                         {{ $app->review }}
                                     @else
                                         <form method="POST" action="/applications/{{ $app->id }}/review"
-                                            class="flex flex-col space-y-2">
+                                            class="flex flex-row items-center justify-between gap-3.5">
                                             @csrf
                                             <textarea name="review" rows="2"
-                                                class="border rounded-lg px-2 py-1 resize-none focus:outline-none focus:ring-2 focus:ring-blue-400"></textarea>
+                                                class="border rounded-lg px-2 py-1 resize-none focus:outline-none"></textarea>
                                             <button type="submit"
-                                                class="bg-blue-500 text-white py-1.5 px-3 rounded-lg hover:bg-blue-600 transition-colors w-max">
+                                                class="bg-amber-400 text-black font-semibold py-1.5 px-3 rounded-lg hover:bg-amber-500 duration-150 cursor-pointer w-max">
                                                 Отправить
                                             </button>
                                         </form>
