@@ -7,24 +7,16 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
+    // Список всех заявок (админ)
     public function index(Request $request)
     {
-        // Проверка прав
-        if (!$request->session()->get('is_admin')) {
-            abort(403, 'Доступ запрещён');
-        }
-
         $applications = Application::with('user')->get();
-
         return view('admin.index', compact('applications'));
     }
 
+    // Обновление статуса заявки
     public function updateStatus(Request $request, $id)
     {
-        if (!$request->session()->get('is_admin')) {
-            abort(403, 'Доступ запрещён');
-        }
-
         $request->validate([
             'status' => 'required|in:new,in_progress,completed'
         ]);

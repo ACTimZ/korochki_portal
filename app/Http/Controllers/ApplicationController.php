@@ -7,11 +7,13 @@ use Illuminate\Http\Request;
 
 class ApplicationController extends Controller
 {
+    // Показываем форму создания заявки
     public function create()
     {
         return view('applications.create');
     }
 
+    // Сохраняем новую заявку
     public function store(Request $request)
     {
         $request->validate([
@@ -31,6 +33,7 @@ class ApplicationController extends Controller
         return redirect('/applications')->with('success', 'Заявка успешно отправлена!');
     }
 
+    // Список заявок текущего пользователя
     public function index(Request $request)
     {
         $userId = $request->session()->get('user_id');
@@ -40,6 +43,7 @@ class ApplicationController extends Controller
         return view('applications.index', compact('applications'));
     }
 
+    // Добавление отзыва на заявку
     public function addReview(Request $request, $id)
     {
         $request->validate([
@@ -48,7 +52,7 @@ class ApplicationController extends Controller
 
         $app = Application::findOrFail($id);
 
-        // защита: нельзя оставлять отзыв на чужую заявку
+        // Проверка: пользователь может оставлять отзыв только на свою заявку
         if ($app->user_id != $request->session()->get('user_id')) {
             abort(403, 'Нет доступа');
         }
