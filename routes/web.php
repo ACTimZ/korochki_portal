@@ -15,7 +15,6 @@ Route::get('/login', [App\Http\Controllers\LoginController::class, 'showForm']);
 Route::post('/login', [App\Http\Controllers\LoginController::class, 'login']);
 Route::get('/logout', [App\Http\Controllers\LoginController::class, 'logout']);
 
-// Обычные пользователи
 Route::middleware([AuthMiddleware::class])->group(function () {
     Route::get('/applications', [App\Http\Controllers\ApplicationController::class, 'index']);
     Route::post('/applications/{id}/review', [App\Http\Controllers\ApplicationController::class, 'addReview']);
@@ -26,7 +25,6 @@ Route::middleware([AuthMiddleware::class])->group(function () {
     });
 });
 
-// Админ
 Route::middleware([AdminMiddleware::class])->group(function () {
     Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index']);
     Route::post('/admin/applications/{id}/status', [App\Http\Controllers\AdminController::class, 'updateStatus']);

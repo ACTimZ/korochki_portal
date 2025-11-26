@@ -27,7 +27,6 @@ class LoginController extends Controller
             return back()->withErrors(['login_error' => 'Неверный логин или пароль']);
         }
 
-        // сохраняем пользователя в сессию
         $request->session()->put('user_id', $user->id);
         $request->session()->put('is_admin', $user->is_admin);
 

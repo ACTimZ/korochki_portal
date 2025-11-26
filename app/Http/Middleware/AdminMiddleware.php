@@ -10,7 +10,7 @@ class AdminMiddleware
     public function handle(Request $request, Closure $next)
     {
         if (!$request->session()->has('user_id') || !$request->session()->get('is_admin')) {
-            abort(403, 'Доступ запрещён');
+            abort(403, 'Доступ запрещён. Вы не администратор сайта');
         }
 
         return $next($request);

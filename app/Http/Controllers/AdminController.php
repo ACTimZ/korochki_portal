@@ -7,14 +7,12 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
-    // Список всех заявок (админ)
     public function index(Request $request)
     {
         $applications = Application::with('user')->get();
         return view('admin.index', compact('applications'));
     }
 
-    // Обновление статуса заявки
     public function updateStatus(Request $request, $id)
     {
         $request->validate([
