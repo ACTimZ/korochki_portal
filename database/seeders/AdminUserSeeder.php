@@ -13,9 +13,9 @@ class AdminUserSeeder extends Seeder
         DB::table('users')->insert([
             'login' => 'Admin',
             'password' => Hash::make('KorokNET'),
-            'fio' => 'Администратор Портала',
-            'phone' => '80000000000',
-            'email' => 'admin@site.local',
+            'fio' => 'Андрей Т. С.',
+            'phone' => '+7(777)777-77-77',
+            'email' => 'korki@gmail.com',
             'is_admin' => 1,
             'created_at' => now(),
             'updated_at' => now(),

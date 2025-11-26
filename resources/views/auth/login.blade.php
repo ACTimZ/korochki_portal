@@ -3,31 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <title>Вход</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
-<body>
+<body class="flex items-center justify-center min-h-screen">
 
-<h1>Авторизация</h1>
+    <article class="bg-gray-50 border border-gray-400 py-12 px-25 rounded-xl w-2/6">
+        <h1 class="text-2xl font-bold mb-5 text-center">Авторизация</h1>
 
-@if ($errors->has('login_error'))
-    <div style="color:red;">
-        {{ $errors->first('login_error') }}
-    </div>
-@endif
+        @if ($errors->has('login_error'))
+            <article class="bg-red-100 text-red-700 p-2 mb-4 rounded">
+                {{ $errors->first('login_error') }}
+            </article>
+        @endif
 
-<form method="POST" action="/login">
-    @csrf
+        <form method="POST" action="/login" class="flex flex-col gap-5">
+            @csrf
 
-    <label>Логин:</label><br>
-    <input type="text" name="login"><br><br>
+            <article>
+                <label class="block font-light">Логин:</label>
+                <input type="text" name="login" class="bg-white w-full px-4 py-2 border border-gray-400 rounded-lg focus:outline-none" placeholder="Логин">
+            </article>
 
-    <label>Пароль:</label><br>
-    <input type="password" name="password"><br><br>
+            <article>
+                <label class="block font-light">Пароль:</label>
+                <input type="password" name="password" class="bg-white w-full px-4 py-2 border border-gray-400 rounded-lg focus:outline-none" placeholder="Пароль">
+            </article>
 
-    <button type="submit">Войти</button>
-</form>
+            <button type="submit" class="cursor-pointer self-center bg-teal-700 text-white font-semibold px-15 py-3 rounded-lg hover:bg-teal-800 transition-colors">
+                Войти
+            </button>
+        </form>
 
-<br>
-<a href="/register">Еще не зарегистрированы? Регистрация</a>
+        <p class="mt-4 text-center text-sm">
+            <a href="/register" class="text-amber-500 text-xs hover:underline">Еще не зарегистрированы? <span class="font-bold">Регистрация</span></a>
+        </p>
+    </article>
 
 </body>
 </html>
