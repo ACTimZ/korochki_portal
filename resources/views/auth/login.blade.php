@@ -1,12 +1,11 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <title>Вход</title>
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-</head>
-<body class="flex items-center justify-center min-h-screen">
+@extends("layouts.layout")
 
+@section("title")
+Вход
+@endsection
+
+@section("content")
+<section class="min-h-175 flex flex-row justify-center items-center">
     <article class="bg-gray-50 border border-gray-400 py-12 px-25 rounded-xl w-2/6">
         <h1 class="text-2xl font-bold mb-5 text-center">Авторизация</h1>
 
@@ -38,6 +37,5 @@
             <a href="/register" class="text-amber-500 text-xs hover:underline">Еще не зарегистрированы? <span class="font-bold">Регистрация</span></a>
         </p>
     </article>
-
-</body>
-</html>
+</section>
+@endsection
