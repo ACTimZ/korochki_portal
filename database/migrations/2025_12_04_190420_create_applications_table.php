@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
 
             $table->unsignedBigInteger('user_id');
-            $table->string('course_name', 255);
+            $table->unsignedBigInteger('leson_id');
+            // $table->string('course_name', 255);
             $table->date('start_date');
             $table->enum('payment_method', ['cash', 'phone_transfer']);
             $table->enum('status', ['new', 'in_progress', 'completed'])->default('new');
@@ -24,6 +25,7 @@ return new class extends Migration
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('leson_id')->references('id')->on('lesons');
         });
     }
 

@@ -11,7 +11,8 @@ class Application extends Model
 
     protected $fillable = [
         'user_id',
-        'course_name',
+        'leson_id',
+        // 'course_name',
         'start_date',
         'payment_method',
         'status',
@@ -21,5 +22,9 @@ class Application extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function leson() {
+        return $this->belongsTo(Leson::class);
     }
 }

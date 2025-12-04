@@ -7,7 +7,7 @@
 @section("content")
 <main class="flex-grow px-4 py-6 container mx-auto min-h-175">
     <h2 class="text-2xl font-bold mb-5 mt-15">Заявки от пользователей</h2>
-
+{{-- {{ dd($lesons) }} --}}
     @if (session('success'))
         <p class="text-green-600 mb-4">{{ session('success') }}</p>
     @endif
@@ -34,7 +34,7 @@
                         <tr class="bg-teal-100/75 even:bg-teal-50 hover:bg-teal-100 duration-150">
                             <td class="border px-4 py-2 text-center">{{ $app->id }}</td>
                             <td class="border px-4 py-2">{{ $app->user->fio }}<br>({{ $app->user->login }})</td>
-                            <td class="border px-4 py-2 font-semibold">{{ $app->course_name }}</td>
+                            <td class="border px-4 py-2 font-semibold">{{ $lesons[$app->leson_id - 1]->leson }}</td>
                             <td class="border px-4 py-2">{{ $app->start_date }}</td>
                             <td class="border px-4 py-2 text-center">
                                 @if ($app->payment_method == 'cash')

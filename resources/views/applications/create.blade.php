@@ -24,8 +24,13 @@
 
             <article class="flex flex-col">
                 <label class="ms-1 font-light">Наименование курса:</label>
-                <input type="text" name="course_name" value="{{ old('course_name') }}"
-                    class="border border-gray-400 rounded-lg px-3 py-2 focus:outline-none">
+                <select name="leson_id" id="" class="border border-gray-400 rounded-lg px-3 py-2 focus:outline-none">
+                    <option value="1" {{ old('leson_id') == 1 ? 'selected' : '' }}>Основы алгоритмизации и программирования</option>
+                    <option value="2"
+                        {{ old('leson_id') == 2 ? 'selected' : '' }}>Основы веб-дизайна
+                    </option>
+                    <option value="3" {{ old('leson_id') == 3 ? 'selected' : '' }}>Основы проектирования баз данных</option>
+                </select>
             </article>
 
             <article class="flex flex-col">

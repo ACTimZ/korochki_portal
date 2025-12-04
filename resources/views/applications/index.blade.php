@@ -15,6 +15,12 @@
         @if ($applications->isEmpty())
             <p class="text-gray-400 font-semibold text-3xl mb-15">У вас сейчас нет заявок на обучение!</p>
         @else
+            {{-- @foreach ($lesons as $lsn)
+                <div>
+                    {{ $lsn->leson }}
+                    <!-- Или любое другое поле из таблицы lesons -->
+                </div>
+            @endforeach --}}
             <article class="overflow-x-auto">
                 <table class="w-full border-collapse">
                     <thead>
@@ -31,7 +37,7 @@
                         @foreach ($applications as $app)
                             <tr class="bg-white even:bg-gray-100">
                                 <td class="border px-4 py-2 text-center">{{ $app->id }}</td>
-                                <td class="border px-4 py-2">{{ $app->course_name }}</td>
+                                <td class="border px-4 py-2">{{ $lesons[$app->leson_id - 1]->leson }}</td>
                                 <td class="border px-4 py-2">{{ $app->start_date }}</td>
                                 <td class="border px-4 py-2 text-center">
                                     @if ($app->payment_method === 'cash')
